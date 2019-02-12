@@ -1,0 +1,40 @@
+﻿@model NoNameApp.WEB.Models.EditUserViewModel
+@{ViewBag.Title = "Управление учетной записью"; }
+
+<h3>Редактирование данных</h3>
+<p class="message-success">@ViewBag.StatusMessage</p>
+
+@using (Html.BeginForm("Edit", "Account"))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Форма изменения пароля</legend>
+        <ol>
+            <li class="change-password">
+                @Html.LabelFor(m => m.OldPassword)
+                @Html.PasswordFor(m => m.OldPassword)
+                @Html.ValidationMessageFor(m => m.OldPassword)
+            </li>
+            <li class="change-password">
+                @Html.LabelFor(m => m.NewPassword)
+                @Html.PasswordFor(m => m.NewPassword)
+                @Html.ValidationMessageFor(m => m.NewPassword)
+            </li>
+            <li class="change-password">
+                @Html.LabelFor(m => m.ConfirmPassword)
+                @Html.PasswordFor(m => m.ConfirmPassword)
+                @Html.ValidationMessageFor(m => m.ConfirmPassword)
+            </li>
+            <li class="change-password">
+                <input type="submit" value="Смена пароля" class="btn btn-default" />
+            </li>
+        </ol>
+    </fieldset>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
